@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Templates & Examples</title>
+    <style>
+        body {
+            font-family: Vollkorn, Ubuntu, Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
+        }
+
+        .section {
+            border: 1px solid lightgrey;
+            border-radius: 6px;
+            margin: 8px 18px 8px 8px;
+            padding: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .group {
+            display: inline-block;
+            border: 1px solid lightgrey;
+            border-radius: 6px;
+            margin: 8px 18px 8px 8px;
+            padding: 5px;
+            background-color: #f8f8f8;
+        }
+
+        .doc {
+            display: inline-block;
+            border: 1px solid lightgrey;
+            border-radius: 6px;
+            margin: 8px 18px 8px 8px;
+            padding: 11px;
+            background-color: white;
+            width: 220px;
+            vertical-align: top;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .icon {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 26px;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+        }
+
+        body {
+            margin: 40px;
+        }
+
+        ::placeholder {
+            color: lightgrey;
+            opacity: 1;
+        }
+
+        :-ms-input-placeholder {
+            color: lightgrey;
+        }
+
+        ::-ms-input-placeholder {
+            color: lightgrey;
+        }
+
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+    <link rel="stylesheet" target="_blank" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" target="_blank" href="https://fonts.googleapis.com/css?family=Lato">
+    <script>
+        function openTab(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
+<body>
+<div style="" class="hidden">
+    <h1 style="font-size: 50px; margin-bottom: 20px; margin-left: 6px">
+        <img src="icons/logo.png" style="vertical-align: middle; height: 80px">
+        <b style="padding-top: 20px; padding-left: 12px">Personas &amp; JTBD (Nutrition)</b>
+    </h1>
+    <br>
+</div>
+
+<div class="tab">
+    <!--button class="tablinks active" onclick="openTab(event, 'Focus')">Overview</button-->
+    <button class="tablinks active" id="tab_personas" onclick="openTab('personas')">Personas</button>
+</div>
+<div>
+    <div id="personas" style="display: block" class="tabcontent"></div>
+</div>
+
+<script>
+    const personas = ${personas};
+
+    function update() {
+        let html = '';
+
+        personas.forEach(group => {
+            html += '<div class="group" style="text-align: center">';
+            html += '<div>' + group.group + '</div>';
+            group.personas.forEach(persona => {
+                html += '<a target="_blank" href="landing_pages/docs/' + persona.id + '.html">';
+                html += '<div class="doc" style="text-align: left">';
+                html += '<div style="text-align: center">';
+                html += '<img src="icons/' + persona.icon + '" style="height: 190px; border: 1px solid lightgrey; border-radius: 50%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">';
+                html += '</div>';
+                html += '<div style="color: blue; margin-bottom: 10px; height: 2em; margin-top: 12px">' + persona.name + '</div>';
+
+                html += '<table>';
+                html += '<tr>';
+                html += '<td style="width: 24px; vertical-align: middle">';
+                html += '<img src="icons/care.png" style="width: 32px">';
+                html += '</td>';
+                html += '<td style="padding-left: 5px; border-left: 1px dashed darkgreen">';
+                html += '<div style="color: darkgreen; font-size: 70%">care about</div>';
+                html += '<div style="color: grey; font-size: 80%">';
+                persona.careAbout.forEach(item => {
+                    html += '<div style="margin-top: 4px; margin-bottom: 4px">';
+                    html += item;
+                    html += '</div>';
+                });
+                html += '</div>';
+                html += '</td>';
+                html += '</tr>';
+
+                html += '<tr>';
+                html += '<td style="height: 8px"></td>';
+                html += '</tr>';
+                html += '<tr>';
+                html += '<td style="width: 24px; vertical-align: middle">';
+                html += '<img src="icons/win.png" style="width: 32px">';
+                html += '</td>';
+                html += '<td style="padding-left: 5px; border-left: 1px dashed blue">';
+
+                html += '<div style="color: blue; font-size: 70%">wins them</div>';
+                html += '<div style="color: grey; font-size: 80%">';
+                persona.winsThem.forEach(item => {
+                    html += '<div style="margin-top: 4px; margin-bottom: 4px">';
+                    html += item;
+                    html += '</div>';
+                });
+                html += '</div>';
+                html += '</td>';
+                html += '</tr>';
+                html += '<tr>';
+                html += '<td style="height: 8px"></td>';
+                html += '</tr>';
+
+                html += '<tr>';
+                html += '<td style="width: 24px; vertical-align: middle">';
+                html += '<img src="icons/fear.png" style="width: 32px">';
+                html += '</td>';
+                html += '<td style="padding-left: 5px; border-left: 1px dashed crimson">';
+
+                html += '<div style="color: crimson; font-size: 70%">their fear</div>';
+                html += '<div style="color: grey; font-size: 80%">';
+                persona.theirFear.forEach(item => {
+                    html += '<div style="margin-top: 4px; margin-bottom: 4px">';
+                    html += item;
+                    html += '</div>';
+                });
+                html += '</div>';
+                html += '</td>';
+                html += '</tr>';
+                html += '</table>';
+
+                html += '</div>';
+                html += '</div>';
+            });
+            html += '</div>';
+        });
+
+        document.getElementById('personas').innerHTML = html;
+    }
+
+    update();
+</script>
+</body>
+</html>

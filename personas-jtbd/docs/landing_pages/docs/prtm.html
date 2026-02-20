@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Team (Internal)</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129891352-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-129891352-1');
+    </script>
+
+    <style>
+        body {
+            font-family: Vollkorn, Ubuntu, Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .review-image {
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            width: 400px;
+            margin: 10px;
+            padding: 10px
+        }
+
+        .review-image-small {
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            width: 180px;
+            margin: 6px;
+            padding: 6px;
+        }
+
+        .tab-image {
+            width: 24px;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        .tab-image-selected {
+            width: 24px;
+            margin: 2px;
+            padding: 2px;
+            border-bottom: 4px solid blue;
+        }
+
+        .group {
+            margin-top: 2px;
+            margin-bottom: 40px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 1px solid lightgrey;
+        }
+
+        .step {
+            margin: 12px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 1px solid lightgrey;
+            display: inline-block;
+            width: 280px;
+            vertical-align: top;
+        }
+
+        .outcome {
+            margin: 12px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 3px solid blue;
+            vertical-align: top;
+            font-size: 130%;
+            display: inline-block;
+        }
+
+        .repo {
+            overflow: hidden;
+            margin: 10px;
+            padding: 7px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        }
+
+        .aws {
+            overflow: hidden;
+            margin: 10px;
+            padding: 7px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        }
+
+
+        .person {
+            text-align: center;
+            padding: 6px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 11px;
+            width: 110px;
+            overflow: hidden;
+            white-space: nowrap;
+            vertical-align: top;
+        }
+
+        .docs {
+            text-align: center;
+            padding: 6px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 11px;
+            width: 110px;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        .team {
+            text-align: center;
+            padding: 6px;
+            margin: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 13px;
+            width: 110px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            white-space: nowrap;
+            vertical-align: top;
+            border: 2px solid grey;
+            height: 140px;
+        }
+
+        .legacy-team {
+            text-align: center;
+            padding: 6px;
+            margin: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 13px;
+            width: 110px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            white-space: nowrap;
+            vertical-align: top;
+            border: 2px dashed grey;
+            height: 140px;
+        }
+
+        .number {
+            display: inline-block;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            margin: 8px;
+            width: 100px;
+        }
+
+        .dependency-icon {
+            height: 32px;
+            margin-left: 8px;
+            margin-right: 8px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            padding: 4px;
+            border-radius: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <script>
+        function initTab() {
+            if (window.location.hash) {
+                tabName = window.location.hash.substring(1);
+                if (document.getElementById('tab_' + tabName)) {
+                    openTab(tabName);
+                }
+            }
+        }
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            history.pushState({}, "", '#' + tabName);
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('tab_' + tabName).className += " active";
+        }
+
+        function initTab() {
+            if (window.location.hash) {
+                tabName = window.location.hash.substring(1);
+                if (document.getElementById(tabName)) {
+                    openTab(tabName);
+                }
+            }
+        }
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            history.pushState({}, "", '#' + tabName);
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('tab_' + tabName).className += " active";
+        }
+    </script>
+</head>
+<body onload="initTab()" onhashchange="initTab()">
+
+<script>
+    const config = {};
+    const all_personas = [{"id": "ntfm", "name": "Nutritionist / Formulation Manager (Power User)", "description": "Owns day-to-day formulation decisions and is a key influencer on tools, data quality, and process changes.", "icon": "nutritionist.png", "careAbout": ["least-cost formulation", "fast recalculation", "ingredient alternatives", "nutrient constraints", "accuracy", "traceable assumptions"], "winsThem": ["speed without losing rigor", "scenario flexibility", "transparent constraint logic", "less Excel pain", "repeatable results"], "theirFear": ["losing control or flexibility", "black-box optimization", "bad data driving bad formulas"], "jobsToBeDone": [{"id": "N-01", "name": "Create the optimal recipe", "what_it_is": "Build a formulation that satisfies nutrient and business constraints at minimal cost.", "outcome": "Feasible, compliant and profitable formula ready for production.", "steps": [{"step": "Select candidate ingredients", "description": "Choose available and approved raw materials based on nutrition, price, supplier status and inventory."}, {"step": "Apply nutritional and operational constraints", "description": "Define limits, ratios, inclusion rules, customer specs, processing constraints and plant restrictions."}, {"step": "Run optimization", "description": "Execute least-cost or multi-objective calculation to generate viable formulas."}, {"step": "Evaluate alternatives", "description": "Compare options by cost, risk, availability, quality history and production practicality."}, {"step": "Validate plant practicality", "description": "Confirm batching feasibility, pelletability, physical properties and process impact."}, {"step": "Submit for approval", "description": "Send recipe through governance workflow with justification, documentation and change notes."}]}, {"id": "N-02", "name": "Respond to ingredient changes quickly", "what_it_is": "Adapt formulas when prices, availability, specifications or regulations change.", "outcome": "Minimal disruption while maintaining cost, quality and compliance.", "steps": [{"step": "Detect change triggers", "description": "Receive alerts on price updates, supply constraints, spec changes or banned substances."}, {"step": "Assess impact", "description": "Quantify cost/margin impact and identify impacted products and customers."}, {"step": "Propose substitutions", "description": "Find eligible alternates and define equivalency rules and constraints."}, {"step": "Simulate scenarios", "description": "Run what-if cases to compare cost, nutrient profile and operational feasibility."}, {"step": "Publish updated formula", "description": "Version the formula, document rationale and route approvals."}]}], "domain": "customers"}, {"id": "opmn", "name": "Operations / Production Manager", "description": "Responsible for meeting the production plan while handling real-world constraints on the shop floor.", "icon": "production-manager.png", "careAbout": ["executable plans", "minimal last-minute changes", "raw material availability", "plant efficiency", "yield and throughput", "operator clarity"], "winsThem": ["realistic schedules", "fewer disruptions", "clear work instructions", "alignment between departments", "faster recovery from issues"], "theirFear": ["software that looks good but fails on the shop floor", "frequent recipe or schedule churn"], "jobsToBeDone": [{"id": "O-01", "name": "Execute the plan reliably", "what_it_is": "Deliver production according to schedule while managing real-world constraints.", "outcome": "High adherence to plan with minimal disruption.", "steps": [{"step": "Receive production schedule", "description": "Obtain prioritized orders, sequences and quantities from planning."}, {"step": "Confirm materials and capacity", "description": "Verify raw material availability, staffing and equipment readiness."}, {"step": "Dispatch orders to lines", "description": "Release instructions and recipes to operators or automation."}, {"step": "Manage emerging issues", "description": "Handle shortages, breakdowns or quality holds and re-plan if necessary."}, {"step": "Record actuals", "description": "Capture real consumption, times, yields and deviations."}, {"step": "Reconcile with plan", "description": "Compare planned vs actual and explain variances."}]}, {"id": "O-02", "name": "Minimize downtime and changeover losses", "what_it_is": "Run the plant efficiently by reducing stops, rework and changeover overhead.", "outcome": "Higher throughput, better OEE and fewer quality deviations.", "steps": [{"step": "Plan changeovers", "description": "Sequence runs to reduce allergen switches, clean-down time and setup complexity."}, {"step": "Standardize execution", "description": "Use consistent work instructions and operator checklists."}, {"step": "Detect deviations early", "description": "Monitor process signals and quality checks to prevent scrap or rework."}, {"step": "Analyze root causes", "description": "Review downtime codes, micro-stops and recurring bottlenecks."}, {"step": "Implement improvements", "description": "Apply corrective actions and update standard operating procedures."}]}], "domain": "customers"}, {"id": "qcmn", "name": "Quality & Compliance Manager", "description": "Ensures products meet specs and regulatory requirements with strong traceability and audit readiness.", "icon": "quality-manager.png", "careAbout": ["spec compliance", "traceability", "audit readiness", "documentation integrity", "recalls and risk management", "data completeness"], "winsThem": ["single source of truth", "automated checks", "fewer manual handoffs", "faster investigations", "easier reporting"], "theirFear": ["data gaps or manual errors", "late discovery of non-conformances"], "jobsToBeDone": [{"id": "Q-01", "name": "Release safe and compliant product", "what_it_is": "Ensure products meet specifications and legal requirements before shipment.", "outcome": "Audit readiness and reduced risk.", "steps": [{"step": "Define sampling requirements", "description": "Set which tests are required based on risk, material and regulations."}, {"step": "Receive and validate lab results", "description": "Collect results automatically or manually and ensure completeness."}, {"step": "Compare against limits", "description": "Evaluate conformity versus specifications and tolerances."}, {"step": "Block or release product", "description": "Decide disposition and communicate to operations and logistics."}, {"step": "Generate required documentation", "description": "Produce COAs, compliance statements and audit evidence."}]}, {"id": "Q-02", "name": "Investigate issues and manage corrective actions", "what_it_is": "Handle non-conformances, complaints and potential recalls with speed and evidence.", "outcome": "Rapid containment, documented remediation and lower recurrence.", "steps": [{"step": "Trigger an investigation", "description": "Open a case from deviations, customer complaints, audit findings or lab failures."}, {"step": "Trace affected lots", "description": "Identify impacted batches, raw materials, suppliers and shipment destinations."}, {"step": "Assess risk and disposition", "description": "Determine severity and decide hold, rework, scrap or recall actions."}, {"step": "Execute CAPA", "description": "Assign corrective/preventive actions with owners, deadlines and verification steps."}, {"step": "Close and learn", "description": "Document root cause and update specs, controls or training to prevent recurrence."}]}], "domain": "customers"}, {"id": "itmn", "name": "IT Manager", "description": "Owns system reliability, security, integrations and governance across the application landscape.", "icon": "it-manager.png", "careAbout": ["integrations", "security", "maintainability", "cloud strategy", "vendor reliability", "data governance"], "winsThem": ["ecosystem alignment", "well-documented APIs", "professional deployment and monitoring", "clear ownership model", "predictable upgrades"], "theirFear": ["shadow IT or impossible integrations", "security gaps from poorly governed tools"], "jobsToBeDone": [{"id": "IT-01", "name": "Keep the landscape stable and integrated", "what_it_is": "Ensure systems are reliable, secure and connected.", "outcome": "High availability, trusted data and satisfied users.", "steps": [{"step": "Maintain interfaces", "description": "Ensure data flows between ERP, formulation, MES, labs and partners."}, {"step": "Monitor incidents and performance", "description": "Track uptime, latency, failures and respond quickly."}, {"step": "Manage upgrades and releases", "description": "Plan deployments while minimizing disruption."}, {"step": "Enforce security and governance", "description": "Apply roles, auditability, data protection and compliance."}, {"step": "Reduce shadow IT", "description": "Provide trusted capabilities so users avoid spreadsheets or side tools."}]}, {"id": "IT-02", "name": "Enable secure adoption at scale", "what_it_is": "Roll out capabilities to many sites and users without compromising security or supportability.", "outcome": "Fast onboarding, consistent configuration and controlled access.", "steps": [{"step": "Standardize environments", "description": "Define reference configurations, SSO, roles, and data model standards."}, {"step": "Provision users and permissions", "description": "Apply role-based access and least privilege for personas and sites."}, {"step": "Set observability and alerts", "description": "Instrument logs/metrics and establish escalation paths."}, {"step": "Operate change management", "description": "Coordinate training, documentation and release communications."}, {"step": "Audit and improve controls", "description": "Review access, logs and compliance posture regularly."}]}], "domain": "customers"}, {"id": "prpu", "name": "Procurement / Purchasing", "description": "Optimizes input costs and supplier risk; can strongly influence whether changes are feasible.", "icon": "procurement.png", "careAbout": ["ingredient price volatility", "supplier comparison", "contracts and commitments", "immediate cost impact", "supply continuity", "quality consistency"], "winsThem": ["scenario planning", "link between sourcing and formula economics", "visibility into alternates and constraints", "fewer emergency buys"], "theirFear": ["buying blind", "being blamed for shortages or cost spikes"], "jobsToBeDone": [{"id": "P-01", "name": "Buy at the best risk-adjusted cost", "what_it_is": "Secure materials at optimal price while maintaining supply continuity.", "outcome": "Lower input costs and reduced supply risk.", "steps": [{"step": "Review demand requirements", "description": "Understand upcoming volume needs from production and forecast."}, {"step": "Compare supplier options", "description": "Evaluate price, availability, reliability and quality history."}, {"step": "Analyze contract positions", "description": "Check commitments, hedges and open exposure."}, {"step": "Simulate formulation impact", "description": "See how purchases influence recipe cost and flexibility."}, {"step": "Place and track orders", "description": "Issue POs, confirm delivery schedules and monitor execution."}]}, {"id": "P-02", "name": "Mitigate supply disruptions proactively", "what_it_is": "Prepare alternates and contingency plans before shortages hit production.", "outcome": "Fewer stockouts, smoother production and reduced premium freight.", "steps": [{"step": "Monitor supplier risk signals", "description": "Track lead times, fill rates, quality events and market constraints."}, {"step": "Qualify alternate suppliers/materials", "description": "Work with quality and formulation to approve substitutes."}, {"step": "Coordinate with planning and formulation", "description": "Ensure alternates are usable in recipes and reflected in constraints."}, {"step": "Execute contingency sourcing", "description": "Shift volumes or split buys while maintaining spec compliance."}]}], "domain": "customers"}, {"id": "exec", "name": "Executive / Economic Buyer (CEO, COO, GM)", "description": "Accountable for profitability, scalability and risk; decides whether investment is worth the change effort.", "icon": "executive.png", "careAbout": ["margin protection", "scalability across sites", "risk reduction", "standardization", "ROI and payback time", "organizational focus"], "winsThem": ["integrated platform instead of point solutions", "better visibility and accountability", "confidence in numbers", "faster decision cycles", "competitive advantage"], "theirFear": ["big project", "slow adoption", "unclear value", "hidden operational disruption"], "jobsToBeDone": [{"id": "E-01", "name": "Protect margin in volatile markets", "what_it_is": "Continuously maintain profitability despite raw material price swings and supply uncertainty.", "outcome": "Stable or improved margin and predictable earnings.", "steps": [{"step": "Monitor ingredient and energy cost evolution", "description": "Track indices, supplier prices, contracts and energy trends; receive alerts for abnormal movements."}, {"step": "Understand exposure by product and customer", "description": "See which products, formulas and customers are most impacted and quantify margin risk."}, {"step": "Trigger reformulation or price updates", "description": "Initiate simulations in formulation or propose commercial price adjustments."}, {"step": "Validate service and quality impact", "description": "Ensure changes won\u2019t violate specs, contracts or performance."}, {"step": "Approve change", "description": "Review projections and authorize operational or commercial actions."}, {"step": "Track realized versus expected benefit", "description": "Compare predicted savings with actual outcomes and refine future decisions."}]}, {"id": "E-02", "name": "Standardize performance across sites", "what_it_is": "Create consistent ways of working across plants to scale efficiently and reduce risk.", "outcome": "Comparable KPIs, repeatable execution and lower operational variance.", "steps": [{"step": "Define governance and standards", "description": "Set shared rules for formulas, approvals, quality controls and data definitions."}, {"step": "Roll out common workflows", "description": "Adopt shared processes for formulation changes, production execution and release."}, {"step": "Benchmark and compare sites", "description": "Review cost, yield, downtime and quality performance across plants."}, {"step": "Fund improvements", "description": "Allocate investment to the highest ROI standardization initiatives."}]}], "domain": "customers"}, {"id": "moth", "name": "Mother Earth (Environmental Stakeholder)", "description": "Represents environmental sustainability, ecological impact and long-term planetary health in decision-making.", "icon": "mother-earth.png", "careAbout": ["reduced carbon footprint", "responsible sourcing", "waste reduction", "water stewardship", "biodiversity protection", "circular economy"], "winsThem": ["lower emissions per ton produced", "transparent impact tracking", "sustainable ingredient substitution", "reduced waste and overproduction", "credible ESG outcomes"], "theirFear": ["resource depletion", "unsustainable monocultures", "hidden environmental externalities", "greenwashing without proof"], "jobsToBeDone": [{"id": "ME-01", "name": "Reduce environmental impact of production", "what_it_is": "Minimize ecological footprint across sourcing, formulation and manufacturing.", "outcome": "Lower emissions, reduced waste and responsible resource usage.", "steps": [{"step": "Measure environmental baseline", "description": "Quantify carbon, water and land-use impact per ingredient and per product."}, {"step": "Identify high-impact drivers", "description": "Highlight ingredients, processes or logistics with disproportionate footprint."}, {"step": "Simulate sustainable alternatives", "description": "Model reformulations or sourcing shifts to reduce emissions and resource intensity."}, {"step": "Optimize for multi-objective trade-offs", "description": "Balance cost, nutrition, quality and environmental constraints in decisions."}, {"step": "Track and report improvements", "description": "Monitor impact reduction over time and support ESG reporting."}]}, {"id": "ME-02", "name": "Enable transparent sustainability reporting", "what_it_is": "Provide verifiable data to support environmental accountability.", "outcome": "Credible ESG disclosures and improved stakeholder trust.", "steps": [{"step": "Collect traceable supply data", "description": "Link ingredients to origin, certifications and environmental metrics."}, {"step": "Aggregate site-level impact", "description": "Consolidate production and sourcing data across plants."}, {"step": "Generate sustainability KPIs", "description": "Calculate emissions intensity, waste ratios and renewable usage."}, {"step": "Support audit and verification", "description": "Provide documentation and evidence trails for external validation."}]}], "domain": "customers"}, {"id": "prtm", "name": "Product Team (Internal)", "description": "Owns roadmap, positioning, and long-term product strategy; balances market needs with platform coherence.", "icon": "product-team.png", "careAbout": ["clear market differentiation", "customer feedback loops", "feature adoption", "scalability", "technical feasibility", "pricing and packaging fit"], "winsThem": ["validated use cases", "clear prioritization inputs", "cross-functional alignment", "data-driven roadmap decisions", "measurable outcomes"], "theirFear": ["building features no one uses", "misalignment between product and market needs", "accumulating technical debt"], "jobsToBeDone": [{"id": "PT-01", "name": "Deliver high-value product increments", "what_it_is": "Translate market needs and strategy into validated product capabilities.", "outcome": "Features that increase adoption, retention and competitive advantage.", "steps": [{"step": "Identify market and customer needs", "description": "Collect input from sales, support, customers and industry trends to understand unmet needs."}, {"step": "Define problem statements and scope", "description": "Clarify user pain points, business value and measurable outcomes."}, {"step": "Prioritize against roadmap and strategy", "description": "Balance revenue impact, technical effort and strategic alignment."}, {"step": "Design solution and user flows", "description": "Create functional specs, UX flows and architectural alignment."}, {"step": "Deliver increment and validate impact", "description": "Release feature, measure adoption, collect feedback and iterate."}]}, {"id": "PT-02", "name": "Maintain platform coherence and scalability", "what_it_is": "Ensure modules work together and scale across customers.", "outcome": "Stable, extensible and consistent platform architecture.", "steps": [{"step": "Define architectural standards", "description": "Set guidelines for APIs, data models and module boundaries."}, {"step": "Review cross-module dependencies", "description": "Prevent duplication and conflicting logic."}, {"step": "Monitor performance and technical debt", "description": "Track system health, refactor where necessary."}, {"step": "Plan platform evolution", "description": "Align infrastructure, security and scalability improvements with growth."}]}], "domain": "internal customers"}, {"id": "ocsc", "name": "On-Call / InfoSec (Internal)", "description": "Protects company and customer data while enabling business growth through secure operations and incident response.", "icon": "operations.png", "careAbout": ["data protection", "access control", "compliance standards", "audit logs", "incident response readiness"], "winsThem": ["clear security architecture", "certifications", "role-based permissions", "proactive risk management"], "theirFear": ["data breaches", "non-compliance exposure"], "jobsToBeDone": [{"id": "IS-01", "name": "Prevent and contain security incidents", "what_it_is": "Proactively reduce the likelihood and impact of data breaches or service disruptions.", "outcome": "Minimized security risk and rapid containment of incidents.", "steps": [{"step": "Monitor security signals", "description": "Continuously review logs, alerts and anomaly detection outputs."}, {"step": "Assess and classify threats", "description": "Determine severity, scope and potential business impact."}, {"step": "Contain and remediate", "description": "Isolate affected systems, revoke access or deploy patches."}, {"step": "Communicate internally and externally", "description": "Inform stakeholders, customers or regulators when required."}, {"step": "Conduct post-incident review", "description": "Analyze root cause and implement preventive measures."}]}, {"id": "IS-02", "name": "Ensure compliance and audit readiness", "what_it_is": "Maintain alignment with security standards and contractual obligations.", "outcome": "Successful audits and maintained certifications.", "steps": [{"step": "Maintain security policies and controls", "description": "Document and enforce procedures aligned with standards."}, {"step": "Manage access governance", "description": "Review role-based permissions and enforce least-privilege principles."}, {"step": "Prepare audit evidence", "description": "Collect logs, reports and documentation for auditors."}, {"step": "Remediate findings", "description": "Address gaps identified during internal or external audits."}]}], "domain": "internal customers"}, {"id": "sale", "name": "Sales Team (Internal)", "description": "Frontline revenue drivers who need crisp positioning, proof, and repeatable deal plays.", "icon": "sales-team.png", "careAbout": ["clear differentiation", "ROI story", "competitive positioning", "shorter sales cycles", "deal size growth"], "winsThem": ["strong case studies", "quantified value messaging", "demo environments that impress", "clear objection handling"], "theirFear": ["complex messaging", "features that are hard to explain"], "jobsToBeDone": [{"id": "S-01", "name": "Win new enterprise deals", "what_it_is": "Acquire new customers in target industries.", "outcome": "Closed contracts and revenue growth.", "steps": [{"step": "Identify qualified prospects", "description": "Target companies with fit in size, maturity and industry."}, {"step": "Diagnose business pain", "description": "Understand cost pressures, inefficiencies and strategic goals."}, {"step": "Demonstrate value proposition", "description": "Show relevant use cases aligned to persona jobs-to-be-done."}, {"step": "Build ROI case", "description": "Quantify savings, risk reduction and operational gains."}, {"step": "Negotiate and close", "description": "Align pricing, scope and contractual terms."}]}, {"id": "S-02", "name": "Expand within existing accounts", "what_it_is": "Increase footprint through additional modules or sites.", "outcome": "Higher ARR and deeper platform entrenchment.", "steps": [{"step": "Analyze account maturity", "description": "Assess current module usage and gaps."}, {"step": "Identify cross-sell opportunities", "description": "Map unmet needs to available capabilities."}, {"step": "Present expansion value", "description": "Show incremental ROI and operational impact."}, {"step": "Close expansion agreement", "description": "Formalize scope and onboarding plan."}]}], "domain": "internal customers"}, {"id": "cuca", "name": "Customer Care / Customer Success (Internal)", "description": "Owns onboarding, adoption, retention and expansion; measures success by customer outcomes and health.", "icon": "customer-care.png", "careAbout": ["smooth onboarding", "user adoption", "low support ticket volume", "renewals", "customer health"], "winsThem": ["intuitive UX", "strong documentation", "training materials", "clear workflows", "predictable releases"], "theirFear": ["high churn", "frustrated power users"], "jobsToBeDone": [{"id": "CS-01", "name": "Resolve customer incidents efficiently", "what_it_is": "Diagnose and resolve issues affecting customer operations.", "outcome": "Fast resolution, minimal downtime and high customer satisfaction.", "steps": [{"step": "Receive and classify ticket", "description": "Categorize severity, module impact and business risk."}, {"step": "Reproduce or analyze issue", "description": "Investigate logs, data and configuration to understand root cause."}, {"step": "Provide workaround or fix", "description": "Deliver temporary mitigation or coordinate code correction."}, {"step": "Communicate status transparently", "description": "Keep customer informed on timeline and actions."}, {"step": "Document knowledge", "description": "Update internal documentation and prevent recurrence."}]}, {"id": "CS-02", "name": "Increase product adoption", "what_it_is": "Help customers use the platform more effectively.", "outcome": "Higher retention and module expansion.", "steps": [{"step": "Identify underused features", "description": "Analyze usage metrics and customer workflows."}, {"step": "Educate and guide customers", "description": "Provide training, best practices and optimization advice."}, {"step": "Collect feedback for product", "description": "Relay recurring issues and improvement suggestions."}]}], "domain": "internal customers"}, {"id": "exlt", "name": "Executive Leadership Team (Internal)", "description": "Sets strategic direction, aligns functions and allocates resources to hit growth and profitability goals.", "icon": "internal-executive.png", "careAbout": ["strategic alignment", "profitability", "market positioning", "cross-functional efficiency", "long-term growth"], "winsThem": ["clear KPIs", "measurable impact", "organizational alignment", "strong execution discipline"], "theirFear": ["fragmented strategy", "resource misallocation", "missed growth opportunities"], "jobsToBeDone": [{"id": "EL-01", "name": "Align strategy with execution", "what_it_is": "Translate company vision into coordinated cross-functional initiatives.", "outcome": "Organization moving in one direction with measurable progress.", "steps": [{"step": "Define strategic priorities", "description": "Set annual and multi-year objectives with measurable targets."}, {"step": "Allocate resources", "description": "Assign budget, headcount and investments aligned to priorities."}, {"step": "Monitor KPI performance", "description": "Track financial, operational and customer metrics."}, {"step": "Remove cross-functional blockers", "description": "Intervene when departments are misaligned or stalled."}, {"step": "Adjust strategy as needed", "description": "Refine direction based on market feedback and performance data."}]}, {"id": "EL-02", "name": "Ensure sustainable growth", "what_it_is": "Balance profitability, innovation and risk while scaling the business.", "outcome": "Long-term enterprise value creation.", "steps": [{"step": "Evaluate growth opportunities", "description": "Assess new markets, partnerships or product expansions."}, {"step": "Assess financial and operational risk", "description": "Analyze downside scenarios and capital exposure."}, {"step": "Approve major investments", "description": "Authorize significant projects or acquisitions."}, {"step": "Review performance against targets", "description": "Ensure initiatives deliver expected ROI and strategic impact."}]}], "domain": "internal customers"}];
+    const persona = {"id": "prtm", "name": "Product Team (Internal)", "description": "Owns roadmap, positioning, and long-term product strategy; balances market needs with platform coherence.", "icon": "product-team.png", "careAbout": ["clear market differentiation", "customer feedback loops", "feature adoption", "scalability", "technical feasibility", "pricing and packaging fit"], "winsThem": ["validated use cases", "clear prioritization inputs", "cross-functional alignment", "data-driven roadmap decisions", "measurable outcomes"], "theirFear": ["building features no one uses", "misalignment between product and market needs", "accumulating technical debt"], "jobsToBeDone": [{"id": "PT-01", "name": "Deliver high-value product increments", "what_it_is": "Translate market needs and strategy into validated product capabilities.", "outcome": "Features that increase adoption, retention and competitive advantage.", "steps": [{"step": "Identify market and customer needs", "description": "Collect input from sales, support, customers and industry trends to understand unmet needs."}, {"step": "Define problem statements and scope", "description": "Clarify user pain points, business value and measurable outcomes."}, {"step": "Prioritize against roadmap and strategy", "description": "Balance revenue impact, technical effort and strategic alignment."}, {"step": "Design solution and user flows", "description": "Create functional specs, UX flows and architectural alignment."}, {"step": "Deliver increment and validate impact", "description": "Release feature, measure adoption, collect feedback and iterate."}]}, {"id": "PT-02", "name": "Maintain platform coherence and scalability", "what_it_is": "Ensure modules work together and scale across customers.", "outcome": "Stable, extensible and consistent platform architecture.", "steps": [{"step": "Define architectural standards", "description": "Set guidelines for APIs, data models and module boundaries."}, {"step": "Review cross-module dependencies", "description": "Prevent duplication and conflicting logic."}, {"step": "Monitor performance and technical debt", "description": "Track system health, refactor where necessary."}, {"step": "Plan platform evolution", "description": "Align infrastructure, security and scalability improvements with growth."}]}], "domain": "internal customers"};
+</script>
+<div id="Navigation"></div>
+<div style="margin: 20px">
+    <div id="Header"></div>
+
+    <div style="margin: 0; margin-top: 12px">
+        <div class="tab">
+            <button class="tablinks active" id="tab_HomeTab" onclick="openTab('HomeTab')">Home</button>
+            <button class="tablinks" id="tab_JobsTab" onclick="openTab('JobsTab')">Jobs To Be Done</button>
+            <button class="tablinks" id="tab_ExamplesTab" onclick="openTab('ExamplesTab')">Examples</button>
+        </div>
+
+        <div id="HomeTab" class="tabcontent" style="display: block; padding: 10px">
+            <div id="Home"></div>
+        </div>
+        <div id="JobsTab" class="tabcontent" style="padding: 10px;">
+            <div id="Jobs"></div>
+        </div>
+        <div id="ExamplesTab" class="tabcontent" style="padding: 10px;">
+            <div id="Examples"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addNavigation() {
+        let html = '';
+        html += '<div style="margin: 20px 20px 10px 20px; font-size: 85%; color: black">';
+        let prev_domain = all_personas[0].domain;
+        all_personas.forEach(per => {
+            if (prev_domain.toLowerCase() !== per.domain.toLowerCase()) {
+                prev_domain = per.domain;
+                html += '<div style="margin-top: 5px; margin-left: 4px; vertical-align: top; display: inline-block; border-left: 2px solid lightgrey; height: 30px;">&nbsp;</div>';
+            }
+            html += '<a href="' + per.id + '.html">';
+            const tabClass = per.id === persona.id ? 'tab-image-selected' : 'tab-image';
+            html += '<img src="../../icons/' + per.icon + '" style="" class="' + tabClass + '">';
+            html += '</a>';
+        });
+        html += '</div>';
+
+        document.getElementById('Navigation').innerHTML = html;
+    }
+
+    addNavigation();
+
+    function addHeader() {
+        let html = '';
+
+        html += '<table>';
+        html += '<tr>';
+        html += '<td>';
+        html += '<div>';
+        html += '<img src="../../icons/' + persona.icon + '" style="width: 110px">';
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="vertical-align: top">';
+        html += '<div style="margin-left: 20px; font-size: 90%; color: grey; vertical-align: top">';
+        html += persona.domain;
+        html += ' / <span style="color: blue; font-weight: bold;">' + persona.id.toUpperCase() + '</span>';
+        html += '</div>';
+        html += '<div style="font-size: 50px; margin-left: 20px">';
+        html += persona.name;
+        html += '</div>';
+        html += '<div style="font-size: 16px; margin-left: 20px; color: grey; margin-top: 3px">';
+        html += persona.description ? persona.description : '';
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '</table>';
+
+        document.getElementById('Header').innerHTML = html;
+    }
+
+    function addHome() {
+        let html = '';
+
+        html += '<div class="doc" style="text-align: center">';
+        html += '<table>';
+        html += '<tr>';
+        html += '<td style="width: 48px; vertical-align: middle">';
+        html += '<img src="../../icons/care.png" style="width: 64px; margin: 8px">';
+        html += '</td>';
+        html += '<td style="padding-left: 5px; border-left: 1px dashed darkgreen">';
+        html += '<div style="color: darkgreen; font-size: 90%">care about</div>';
+        html += '<div style="color: black; font-size: 110%">';
+        persona.careAbout.forEach(item => {
+            html += '<div style="margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+
+        html += '<tr>';
+        html += '<td style="height: 24px"></td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td style="width: 24px; vertical-align: middle">';
+        html += '<img src="../../icons/win.png" style="width: 64px; margin: 8px">';
+        html += '</td>';
+        html += '<td style="padding-left: 5px; border-left: 1px dashed blue">';
+
+        html += '<div style="color: blue; font-size: 90%">wins them</div>';
+        html += '<div style="color: black; font-size: 110%">';
+        persona.winsThem.forEach(item => {
+            html += '<div style="margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td style="height: 24px"></td>';
+        html += '</tr>';
+
+        html += '<tr>';
+        html += '<td style="width: 24px; vertical-align: middle">';
+        html += '<img src="../../icons/fear.png" style="width: 64px; margin: 8px">';
+        html += '</td>';
+        html += '<td style="padding-left: 5px; border-left: 1px dashed crimson">';
+
+        html += '<div style="color: crimson; font-size: 90%">their fear</div>';
+        html += '<div style="color: black; font-size: 110%">';
+        persona.theirFear.forEach(item => {
+            html += '<div style="margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '</table>';
+
+        html += '</div>';
+
+
+        document.getElementById('Home').innerHTML = html;
+    }
+
+    function addJBTD() {
+        let html = '';
+
+        persona.jobsToBeDone.forEach(job => {
+            html += '<div style="text-align: center" class="group">';
+            html += '<div style="font-size: 190%; margin-bottom: 12px">' + job.name + '</div>';
+            html += '<div style="">' + job.what_it_is + '</div>';
+            html += '<div style="text-align: center; margin-top: 24px" class="group">';
+            job.steps.forEach(step => {
+                html += '<div style="" class="step">';
+                html += '<div style="color: blue; font-size: 140%; margin-bottom: 20px">' + step.step + '</div>';
+                html += '<div style="">' + step.description + '</div>';
+                html += '</div>';
+            });
+            html += '<div style=""><img src="../../icons/down.png" style="width: 60px"></div>';
+            html += '<div style="" class="outcome">OUTCOME: ' + job.outcome + '</div>';
+            html += '</div>';
+            html += '</div>';
+        });
+
+        document.getElementById('Jobs').innerHTML = html;
+    }
+
+    addHeader();
+    addHome();
+    addJBTD();
+
+
+</script>
+
+</body>
+</html>

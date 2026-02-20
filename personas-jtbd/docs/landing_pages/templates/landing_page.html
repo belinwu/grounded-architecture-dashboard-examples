@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${persona_name}</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129891352-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-129891352-1');
+    </script>
+
+    <style>
+        body {
+            font-family: Vollkorn, Ubuntu, Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .review-image {
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            width: 400px;
+            margin: 10px;
+            padding: 10px
+        }
+
+        .review-image-small {
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            width: 180px;
+            margin: 6px;
+            padding: 6px;
+        }
+
+        .tab-image {
+            width: 24px;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        .tab-image-selected {
+            width: 24px;
+            margin: 2px;
+            padding: 2px;
+            border-bottom: 4px solid blue;
+        }
+
+        .group {
+            margin-top: 2px;
+            margin-bottom: 40px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 1px solid lightgrey;
+            vertical-align: top;
+        }
+
+        .kpi {
+            margin-top: -3px;
+            margin-bottom: -6px;
+            padding: 0px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            vertical-align: top;
+            display: block;
+            background-color: #f0f0f0;
+        }
+
+        .step {
+            margin: 12px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 1px solid lightgrey;
+            display: inline-block;
+            width: 280px;
+            vertical-align: top;
+        }
+
+        .outcome {
+            margin: 12px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            overflow: hidden;
+            border: 3px solid blue;
+            vertical-align: top;
+            font-size: 130%;
+            display: inline-block;
+        }
+
+        .repo {
+            overflow: hidden;
+            margin: 10px;
+            padding: 7px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        }
+
+        .aws {
+            overflow: hidden;
+            margin: 10px;
+            padding: 7px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        }
+
+
+        .person {
+            text-align: center;
+            padding: 6px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 11px;
+            width: 110px;
+            overflow: hidden;
+            white-space: nowrap;
+            vertical-align: top;
+        }
+
+        .docs {
+            text-align: center;
+            padding: 6px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 11px;
+            width: 110px;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        .team {
+            text-align: center;
+            padding: 6px;
+            margin: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 13px;
+            width: 110px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            white-space: nowrap;
+            vertical-align: top;
+            border: 2px solid grey;
+            height: 140px;
+        }
+
+        .legacy-team {
+            text-align: center;
+            padding: 6px;
+            margin: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 13px;
+            width: 110px;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            white-space: nowrap;
+            vertical-align: top;
+            border: 2px dashed grey;
+            height: 140px;
+        }
+
+        .number {
+            display: inline-block;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            margin: 8px;
+            width: 100px;
+        }
+
+        .dependency-icon {
+            height: 32px;
+            margin-left: 8px;
+            margin-right: 8px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 40px 0px 40px 80px;
+            border-color: transparent transparent transparent black;
+            transform: rotate(0deg);
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <script>
+        function initTab() {
+            if (window.location.hash) {
+                tabName = window.location.hash.substring(1);
+                if (document.getElementById('tab_' + tabName)) {
+                    openTab(tabName);
+                }
+            }
+        }
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            history.pushState({}, "", '#' + tabName);
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('tab_' + tabName).className += " active";
+        }
+
+        function initTab() {
+            if (window.location.hash) {
+                tabName = window.location.hash.substring(1);
+                if (document.getElementById(tabName)) {
+                    openTab(tabName);
+                }
+            }
+        }
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            history.pushState({}, "", '#' + tabName);
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('tab_' + tabName).className += " active";
+        }
+    </script>
+</head>
+<body onload="initTab()" onhashchange="initTab()">
+
+<script>
+    const config = ${config};
+    const all_personas = ${all_personas};
+    const persona = ${persona};
+</script>
+<div id="Navigation"></div>
+<div style="margin: 20px">
+    <div id="Header"></div>
+
+    <div style="margin: 0; margin-top: 12px">
+        <div class="tab">
+            <button class="tablinks active" id="tab_HomeTab" onclick="openTab('HomeTab')">Home</button>
+            <button class="tablinks" id="tab_JobsTab" onclick="openTab('JobsTab')">Jobs To Be Done</button>
+            <button class="tablinks" id="tab_KPITab" onclick="openTab('KPITab')">KPIs</button>
+            <button class="tablinks" id="tab_RoadmapTab" onclick="openTab('RoadmapTab')">Product Vision</button>
+            <button class="tablinks" id="tab_ExamplesTab" onclick="openTab('ExamplesTab')">Examples</button>
+        </div>
+
+        <div id="HomeTab" class="tabcontent" style="display: block; padding: 10px">
+            <div id="Home"></div>
+        </div>
+        <div id="JobsTab" class="tabcontent" style="padding: 10px;">
+            <div id="Jobs"></div>
+        </div>
+        <div id="KPITab" class="tabcontent" style="padding: 10px;">
+            <div id="KPI"></div>
+        </div>
+        <div id="RoadmapTab" class="tabcontent" style="padding: 10px;">
+            <div id="Roadmap"></div>
+        </div>
+        <div id="ExamplesTab" class="tabcontent" style="padding: 10px;">
+            <div id="Examples"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addNavigation() {
+        let html = '';
+        html += '<div style="margin: 20px 20px 10px 20px; font-size: 85%; color: black">';
+        let prev_domain = all_personas[0].domain;
+        all_personas.forEach(per => {
+            if (prev_domain.toLowerCase() !== per.domain.toLowerCase()) {
+                prev_domain = per.domain;
+                html += '<div style="margin-top: 5px; margin-left: 4px; vertical-align: top; display: inline-block; border-left: 2px solid lightgrey; height: 30px;">&nbsp;</div>';
+            }
+            html += '<a href="' + per.id + '.html">';
+            const tabClass = per.id === persona.id ? 'tab-image-selected' : 'tab-image';
+            html += '<img src="../../icons/' + per.icon + '" style="" class="' + tabClass + '">';
+            html += '</a>';
+        });
+        html += '</div>';
+
+        document.getElementById('Navigation').innerHTML = html;
+    }
+
+    addNavigation();
+
+    function addHeader() {
+        let html = '';
+
+        html += '<table>';
+        html += '<tr>';
+        html += '<td>';
+        html += '<div>';
+        html += '<img src="../../icons/' + persona.icon + '" style="width: 110px">';
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="vertical-align: top">';
+        html += '<div style="margin-left: 20px; font-size: 90%; color: grey; vertical-align: top">';
+        html += persona.domain;
+        html += ' / <span style="color: blue; font-weight: bold;">' + persona.id.toUpperCase() + '</span>';
+        html += '</div>';
+        html += '<div style="font-size: 50px; margin-left: 20px">';
+        html += persona.name;
+        html += '</div>';
+        html += '<div style="font-size: 16px; margin-left: 20px; color: grey; margin-top: 3px">';
+        html += persona.description ? persona.description : '';
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '</table>';
+
+        document.getElementById('Header').innerHTML = html;
+    }
+
+    function addHome() {
+        let html = '';
+
+        html += '<div class="doc" style="text-align: center; margin-bottom: 22px; margin-left: 24px">';
+        html += '<table>';
+        html += '<tr>';
+        html += '<td style="width: 48px; vertical-align: top">';
+        html += '<img src="../../icons/care.png" style="height: 64px; margin: 8px">';
+        html += '<div style="color: darkgreen; font-size: 90%">care about</div>';
+        html += '<div style="color: black; font-size: 100%; width: 240px">';
+        persona.careAbout.forEach(item => {
+            html += '<div style="background-color: rgba(0, 100, 0, 0.1); margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+
+        html += '<td style="width: 22px"></td>';
+
+        html += '<td style="width: 24px; vertical-align: top">';
+        html += '<img src="../../icons/win.png" style="height: 64px; margin: 8px">';
+
+        html += '<div style="color: blue; font-size: 90%">wins them</div>';
+        html += '<div style="color: black; font-size: 100%; width: 240px">';
+        persona.winsThem.forEach(item => {
+            html += '<div style="background-color: rgba(0, 0, 100, 0.1); margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="width: 22px"></td>';
+        html += '<td style="width: 24px; vertical-align: top">';
+        html += '<img src="../../icons/fear.png" style="height: 64px; margin: 8px">';
+
+        html += '<div style="color: crimson; font-size: 90%">their fear</div>';
+        html += '<div style="color: black; font-size: 100%; width: 240px">';
+        persona.theirFear.forEach(item => {
+            html += '<div style="background-color: rgba(100, 0, 0, 0.1); margin-top: 4px; margin-bottom: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += item;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '</table>';
+
+        html += '</div>';
+
+        html += '<hr>';
+
+        html += '<table style="margin: 24px; font-size: 120%">';
+        html += '<tr style="font-size: 80%; color: grey">';
+        html += '<td>Job</td>';
+        html += '<td></td>';
+        html += '<td>Outcome</td>';
+        html += '</tr>';
+
+        persona.jobsToBeDone.forEach(job => {
+            html += '<tr>';
+            html += '<td>';
+            html += '<div style="text-align: left">';
+            html += '<div style="font-size: 100%; color: blue;">' + job.name + '</div>';
+            html += '</div>';
+            html += '<ul style="font-size: 70%">';
+            job.steps.forEach(step => {
+                html += '<li>';
+                html += step.step;
+                html += '</li>';
+            });
+            html += '</ul>';
+            html += '</td>';
+            html += '<td style="width: 20px; vertical-align: top">';
+            html += '<div style=""><img src="../../icons/right.png" style="width: 20px; margin-left: 20px; margin-right: 20px"></div>';
+            html += '</td>';
+            html += '<td style="vertical-align: top">';
+            html += '<div style="">' + job.outcome + '</div>';
+            html += '<div style="font-size: 80%; color: grey; margin-top: 8px;">(' + job.what_it_is + ')</div>';
+            html += '</td>';
+            html += '</tr>';
+        });
+        html += '</table>';
+
+        document.getElementById('Home').innerHTML = html;
+    }
+
+    function addJBTD() {
+        let html = '';
+
+        html += '<table style="margin: 24px; font-size: 120%">';
+        html += '<tr style="font-size: 80%; color: grey">';
+        html += '<td>Job</td>';
+        html += '<td></td>';
+        html += '<td>Outcome</td>';
+        html += '</tr>';
+
+        persona.jobsToBeDone.forEach(job => {
+            html += '<tr>';
+            html += '<td>';
+            html += '<div style="text-align: left">';
+            html += '<div style="font-size: 100%; color: blue;">' + job.name + '</div>';
+            html += '</div>';
+            html += '<ul style="font-size: 70%">';
+            job.steps.forEach(step => {
+                html += '<li>';
+                html += step.step;
+                html += '</li>';
+            });
+            html += '</ul>';
+            html += '</td>';
+            html += '<td style="width: 20px">';
+            html += '</td>';
+            html += '<td style="vertical-align: top">';
+            html += '<div style="">' + job.outcome + '</div>';
+            html += '<div style="font-size: 80%; color: grey; margin-top: 8px;">(' + job.what_it_is + ')</div>';
+            html += '</td>';
+            html += '</tr>';
+        });
+        html += '</table>';
+
+        html += '<div style="height: 50px"></div>';
+
+        persona.jobsToBeDone.forEach(job => {
+            html += '<div style="text-align: center; background-color: #f0f0f0" class="group">';
+            html += '<div style="font-size: 210%; color: blue; margin-bottom: 12px">' + job.name + '</div>';
+            html += '<div style="">' + job.what_it_is + '</div>';
+            html += '<div style="text-align: center; margin-top: 24px; background-color: white" class="group">';
+            html += '<div style="" class="outcome">' + job.outcome + '</div>';
+            html += '<div style=""><img src="../../icons/up.png" style="width: 60px"></div>';
+            job.steps.forEach(step => {
+                html += '<div style="" class="step">';
+                html += '<div style="color: blue; font-size: 140%; margin-bottom: 20px">' + step.step + '</div>';
+                html += '<div style="">' + step.description + '</div>';
+                html += '<div style="margin-top: 14px">';
+                html += '<table>';
+                step.capabilitiesNeeded.forEach(cap => {
+                    html += '<tr>';
+                    html += '<td>';
+                    html += '<div style="display: inline-block; margin: 4px; padding: 6px; border: 1px solid lightgrey; border-radius: 7px">';
+                    html += '<a target="_blank" href="../../../../examples/food-capabilities-map/docs/landing_pages/docs/' + cap.id + '.html" style="height: 42px" title="' + cap.name + '">';
+                    html += '<img src="cap_icons/' + cap.id + '.png" style="height: 32px" title="' + cap.name + '">';
+                    html += '</a>';
+                    html += '</div>';
+                    html += '</td>';
+                    html += '<td style=" text-align: left">';
+                    html += '<div style="color: blue; font-size: 80%; white-space: nowrap; overflow: hidden">';
+                    html += cap.name;
+                    html += '</div>';
+                    html += '<div style="font-size: 70%;">';
+                    html += cap.how_it_supports;
+                    html += '</div>';
+                    html += '</td>';
+                    html += '</tr>';
+                });
+                html += '</table>';
+                html += '</div>';
+                html += '</div>';
+            });
+            html += '</div>';
+            html += '</div>';
+        });
+
+        document.getElementById('Jobs').innerHTML = html;
+    }
+
+    function addKPIChild(child, color) {
+        let html = '';
+
+        html += '<div style="text-align: center; vertical-align: top">';
+        html += '|';
+        html += '<table style="vertical-align: top">';
+        html += '<tr>';
+        html += '<td colspan="' + (child.children ? child.children.length : 1) + '" style="vertical-align: top">';
+        html += '<div class="kpi" style="background-color: ' + color + '">';
+        html += '<div style="font-size: 90%; padding: 4px">';
+        html += child.name;
+        html += '</div>';
+        html += '<div style="background-color: white; font-size: 80%; padding: 2px">';
+        html += child.description ? child.description : '&nbsp;';
+        html += '</div>';
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '<tr>';
+        if (child.children) {
+            child.children.forEach(c => {
+                html += '<td style="vertical-align: top">';
+                html += addKPIChild(c, color);
+                html += '</td>';
+            });
+        }
+        html += '</tr>';
+        html += '</table>';
+        html += '</div>';
+
+        return html;
+    }
+
+    function addKPIPyramid(pyramid, color) {
+        let html = '';
+
+        html += '<div style="text-align: center; vertical-align: top">';
+        html += '<table style="vertical-align: top">';
+        html += '<tr>';
+        html += '<td colspan="' + pyramid.branches.length + '">';
+        html += '<div class="kpi" style="background-color: ' + color + '">';
+        html += '<div style="font-size: 120%; padding: 4px">';
+        html += pyramid.top.name;
+        html += '</div>';
+        html += '<div style="background-color: white; font-size: 80%; padding: 2px">';
+        html += pyramid.top.description ? pyramid.top.description : '&nbsp;';
+        html += '</div>';
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '<tr>';
+        pyramid.branches.forEach(c => {
+            html += '<td style="vertical-align: top;">';
+            html += addKPIChild(c, color);
+            html += '</td>';
+        });
+        html += '</tr>';
+        html += '</table>';
+        html += '</div>';
+
+        return html;
+    }
+
+    function addKPIs() {
+        let html = '';
+
+        html += '<div class="group">';
+        html += '<div style="text-align: left; font-size: 150%; color: blue; margin-bottom: 12px">Customer Outcomes</div>'
+        html += addKPIPyramid(persona.kpiPyramids.customerOutcomes, '#C0F3EA');
+        html += '</div>'
+
+        html += '<div class="group">'
+        html += '<div style="text-align: left; font-size: 150%; color: blue; margin-bottom: 12px">Business Outcomes</div>'
+        html += addKPIPyramid(persona.kpiPyramids.businessOutcomes, '#B7BDF7');
+        html += '</div>'
+
+        document.getElementById('KPI').innerHTML = html;
+    }
+
+    function addProductVision() {
+        let strategy = persona.productStrategy;
+        const timeHorizon1 = strategy.timeHorizons['1_year'];
+        const timeHorizon2 = strategy.timeHorizons['3_year'];
+        const timeHorizon3 = strategy.timeHorizons['5_year'];
+
+        let html = '';
+
+        html += '<div class="group">';
+        html += '<table>';
+        html += '<tr style="font-size: 80%; color: #a0a0a0">';
+        html += '<td></td>';
+        html += '<td style="padding-left: 16px">Year 1</td>';
+        html += '<td style="padding-left: 16px">Year 3</td>';
+        html += '<td style="padding-left: 16px">Year 5</td>';
+        html += '<td style="padding-left: 16px"></td>';
+        html += '<td rowspan="10" style="width: 280px; vertical-align: top; padding: 20px">';
+        html += '<div style="font-size: 120%; margin-bottom: 24px">';
+        html += 'VISION';
+        html += '</div>';
+        html += '<div style="font-size: 120%">';
+        html += '<img src="../../icons/' + persona.icon + '" style="width: 100px">';
+        html += '</div>';
+        html += '<div style="font-size: 140%">';
+        html += strategy.vision;
+        html += '</div>';
+        html += '</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td></td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon1.productTheme + '</div>';
+        html += '<div style="padding: 10px; font-size: 80%">' + timeHorizon1.focus + '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon2.productTheme + '</div>';
+        html += '<div style="padding: 10px; font-size: 80%">' + timeHorizon2.focus + '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon3.productTheme + '</div>';
+        html += '<div style="padding: 10px; font-size: 80%">' + timeHorizon3.focus + '</div>';
+        html += '</td>';
+        html += '<td style="padding: 10px"></td>';
+        html += '<td>';
+        html += '</td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td></td>';
+        html += '<td style="height: 40px; background-color: black; color: #f0f0f0; padding: 20px">Milestone 1 (Year 1)</td>';
+        html += '<td style="height: 40px; background-color: black; color: #f0f0f0; padding: 20px">Milestone 2 (Year 3)</td>';
+        html += '<td style="height: 40px; background-color: black; color: #f0f0f0; padding: 20px">Milestone 3 (Year 5)</td>';
+        html += '<td><div class="triangle"></div></td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Business<br>KPI</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon1.businessKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon1.businessKPI.revenueStreams.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon2.businessKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon2.businessKPI.revenueStreams.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon3.businessKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon3.businessKPI.revenueStreams.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td></td>';
+        html += '</tr>';
+        html += '<tr>';
+        html += '<td>Customer<br>KPI</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon1.customerKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon1.customerKPI.supporting.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon2.customerKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon2.customerKPI.supporting.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td style="padding: 6px; width: 250px; border-left: 2px solid grey; vertical-align: top">';
+        html += '<div style="padding: 6px; width: 250px">' + timeHorizon3.customerKPI.northStar + '</div>';
+        html += '<div style="padding: 6px; width: 250px; font-size: 80%">';
+        timeHorizon3.customerKPI.supporting.forEach(stream => {
+            html += '<div style="margin-top: 2px; margin-bottom: 2px; padding: 2px; border: 1px solid lightgrey; border-radius: 7px">';
+            html += stream;
+            html += '</div>';
+        });
+        html += '</div>';
+        html += '</td>';
+        html += '<td>';
+        html += '';
+        html += '</td>';
+        html += '</tr>';
+        html += '</table>';
+        html += '</div>'
+
+
+        document.getElementById('Roadmap').innerHTML = html;
+    }
+
+    addHeader();
+    addHome();
+    addJBTD();
+    addKPIs();
+    addProductVision();
+
+
+</script>
+
+</body>
+</html>

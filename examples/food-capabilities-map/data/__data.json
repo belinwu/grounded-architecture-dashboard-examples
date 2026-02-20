@@ -1,0 +1,530 @@
+{
+  "platform": "Feed / Pet Food / Food Manufacturing Platform Blueprint",
+  "version": "1.1",
+  "groups": [
+    {
+      "id": "G1",
+      "name": "Experience & Collaboration",
+      "capabilities": [
+        {
+          "id": "C070",
+          "name": "Customer & Sales Collaboration (Portal/Hub)",
+          "description": "Self-service experiences for customers and internal teams: order entry/status, documents (COA/specs/labels), service interactions, shared visibility into deliveries and invoices.",
+          "dependencies": ["C020", "C060", "C090", "C100", "C110"],
+          "sub_capabilities": [
+            {
+              "id": "C070-01",
+              "name": "Customer Order Self-Service",
+              "description": "Create, modify, track orders; delivery dates; backorder visibility; notifications.",
+              "dependencies": ["C020", "C090", "C110"]
+            },
+            {
+              "id": "C070-02",
+              "name": "Document & Certificate Center",
+              "description": "Access/download COAs, specs, labels, invoices, delivery notes; customer-specific document views.",
+              "dependencies": ["C020", "C050", "C060", "C110"]
+            },
+            {
+              "id": "C070-03",
+              "name": "Customer-Specific Product Catalog & Specs",
+              "description": "Customer-specific assortment, pricing, pack formats, spec agreements and controlled visibility.",
+              "dependencies": ["C010", "C020", "C100", "C110"]
+            },
+            {
+              "id": "C070-04",
+              "name": "Service & Case Management (Lite)",
+              "description": "Requests, complaints, returns; triage and handoff to quality workflows.",
+              "dependencies": ["C050", "C020", "C110"]
+            }
+          ]
+        },
+        {
+          "id": "C071",
+          "name": "Supplier Collaboration (Vendor Portal)",
+          "description": "Supplier-facing workflows: specs exchange, document collection, shipment/lot visibility, performance feedback and dispute handling.",
+          "dependencies": ["C020", "C050", "C060", "C090", "C100", "C110"],
+          "sub_capabilities": [
+            {
+              "id": "C071-01",
+              "name": "Supplier Onboarding & Qualification",
+              "description": "Qualification steps, approvals, required documents, approved material lists, risk level.",
+              "dependencies": ["C050", "C060", "C110", "C100"]
+            },
+            {
+              "id": "C071-02",
+              "name": "Spec Exchange & Change Notifications",
+              "description": "Structured spec uploads, versioning, change alerts and approvals.",
+              "dependencies": ["C060", "C010", "C100", "C110"]
+            },
+            {
+              "id": "C071-03",
+              "name": "Supplier Documents (SDS/COA) Intake",
+              "description": "Collect SDS/COA, validate completeness, route to QC/compliance, maintain traceable history.",
+              "dependencies": ["C050", "C060", "C110"]
+            },
+            {
+              "id": "C071-04",
+              "name": "Supplier Performance & Scorecards",
+              "description": "OTIF, defect rates, nonconformities, responsiveness and trend views.",
+              "dependencies": ["C050", "C020", "C080", "C110"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "Core Business Applications",
+      "capabilities": [
+        {
+          "id": "C010",
+          "name": "Formulation & Specification Engine",
+          "description": "Core product intelligence: ingredient and nutrient model, rules/constraints, least-cost optimization, versioning/approvals, spec management, reformulation and scenarios.",
+          "dependencies": ["C100", "C110", "C090"],
+          "sub_capabilities": [
+            {
+              "id": "C010-01",
+              "name": "Ingredient & Nutrient Data Model",
+              "description": "Ingredients, nutrients, digestibility/energy systems, UoM conversions, derived values, metadata.",
+              "dependencies": ["C100", "C110"]
+            },
+            {
+              "id": "C010-02",
+              "name": "Constraints, Rules & Business Logic",
+              "description": "Min/max bounds, ratios, additive rules, ingredient bans, customer constraints, plant constraints.",
+              "dependencies": ["C010-01", "C110"]
+            },
+            {
+              "id": "C010-03",
+              "name": "Least-Cost Optimization Solver",
+              "description": "Optimization engine with objectives (cost, margin, sustainability), multiple constraints, penalties.",
+              "dependencies": ["C010-02"]
+            },
+            {
+              "id": "C010-04",
+              "name": "Recipe Lifecycle & Governance",
+              "description": "Versioning, approvals, effective dates, audit trail, change rationale, role-based permissions.",
+              "dependencies": ["C110"]
+            },
+            {
+              "id": "C010-05",
+              "name": "Spec Management (Product & Material)",
+              "description": "Material specs, finished product specs, tolerances, test requirements, customer spec variants.",
+              "dependencies": ["C100", "C110"]
+            },
+            {
+              "id": "C010-06",
+              "name": "Reformulation & Scenario Simulation",
+              "description": "What-if comparisons, ingredient substitution, price sensitivity, constraint stress tests.",
+              "dependencies": ["C010-03", "C020", "C080"]
+            }
+          ]
+        },
+        {
+          "id": "C020",
+          "name": "ERP & Commercial Backbone",
+          "description": "Run-the-business: procure-to-pay, order-to-cash, inventory, finance posting, costing, pricing, invoicing, multi-site operations.",
+          "dependencies": ["C100", "C110", "C090"],
+          "sub_capabilities": [
+            {
+              "id": "C020-01",
+              "name": "Procure-to-Pay",
+              "description": "Requisitions, purchase orders, receipts, invoice matching, approvals and vendor management.",
+              "dependencies": ["C110", "C100"]
+            },
+            {
+              "id": "C020-02",
+              "name": "Order-to-Cash",
+              "description": "Quotes, sales orders, pricing, allocations, delivery, invoicing and credit workflows.",
+              "dependencies": ["C110", "C100"]
+            },
+            {
+              "id": "C020-03",
+              "name": "Inventory, Warehousing & Silos",
+              "description": "Lot/batch inventory, locations, silo management, transfers, shrinkage, stock policies.",
+              "dependencies": ["C040", "C110", "C100"]
+            },
+            {
+              "id": "C020-04",
+              "name": "Costing & Margin Accounting",
+              "description": "Standard/actual costing, cost rollups, variance analysis, margin reporting, by-product handling.",
+              "dependencies": ["C010", "C040", "C080"]
+            },
+            {
+              "id": "C020-05",
+              "name": "Finance & Controls",
+              "description": "GL/AP/AR, tax, audit controls, period close, multi-entity consolidation support (as needed).",
+              "dependencies": ["C110"]
+            },
+            {
+              "id": "C020-06",
+              "name": "Pricing & Contract Management",
+              "description": "Customer price lists, formulas, rebates; supplier contracts; link to market indices.",
+              "dependencies": ["C090", "C110", "C080"]
+            }
+          ]
+        },
+        {
+          "id": "C030",
+          "name": "Planning & Supply Chain (MRP/APS)",
+          "description": "Translate demand + constraints into feasible plans: forecasting, MRP, capacity, availability checks, what-if scenarios, production scheduling.",
+          "dependencies": ["C010", "C020", "C100", "C090", "C110"],
+          "sub_capabilities": [
+            {
+              "id": "C030-01",
+              "name": "Demand Planning & Forecasting",
+              "description": "Forecast generation, seasonality, promotions, forecast error tracking and scenario planning.",
+              "dependencies": ["C020", "C080"]
+            },
+            {
+              "id": "C030-02",
+              "name": "Material Requirements Planning (MRP)",
+              "description": "Net requirements, safety stock, lead times, reorder policies, planned orders.",
+              "dependencies": ["C020-03", "C010", "C110"]
+            },
+            {
+              "id": "C030-03",
+              "name": "Capacity Planning",
+              "description": "Rough-cut and detailed capacity checks, constraints by line, shift calendars, bottlenecks.",
+              "dependencies": ["C040", "C110"]
+            },
+            {
+              "id": "C030-04",
+              "name": "Production Scheduling",
+              "description": "Sequence optimization, campaign planning, changeover constraints, due-date adherence.",
+              "dependencies": ["C030-03", "C040"]
+            },
+            {
+              "id": "C030-05",
+              "name": "Supply Risk & What-if Scenarios",
+              "description": "Material shortages, substitutions, alternate sourcing, service level impacts.",
+              "dependencies": ["C010-06", "C020-01", "C080"]
+            }
+          ]
+        },
+        {
+          "id": "C040",
+          "name": "Manufacturing Execution (MES-lite / Production Execution)",
+          "description": "Connect plan to execution: batching/dosing, run sheets, actual consumption, yields, deviations, genealogy and reconciliation to inventory/costing.",
+          "dependencies": ["C010", "C020", "C030", "C090", "C110", "C120"],
+          "sub_capabilities": [
+            {
+              "id": "C040-01",
+              "name": "Batching & Dosing Instructions",
+              "description": "Generate execution instructions from approved recipes; enforce tolerances and sequencing.",
+              "dependencies": ["C010-04", "C030-04", "C110"]
+            },
+            {
+              "id": "C040-02",
+              "name": "Shop-floor Data Capture",
+              "description": "Capture actual weights/consumption, cycle times, downtime reasons and operator inputs.",
+              "dependencies": ["C090", "C120", "C110"]
+            },
+            {
+              "id": "C040-03",
+              "name": "Yield, Loss & Reconciliation",
+              "description": "Track yields, losses, rework; reconcile back to inventory and costing.",
+              "dependencies": ["C020-03", "C020-04", "C110"]
+            },
+            {
+              "id": "C040-04",
+              "name": "Deviations & Exceptions Management",
+              "description": "Detect and record deviations from target recipe/plan; route to quality and approvals.",
+              "dependencies": ["C050", "C110"]
+            },
+            {
+              "id": "C040-05",
+              "name": "Batch Genealogy & Traceability Links",
+              "description": "Maintain batch-to-lot genealogy; connect materials to finished goods for recall readiness.",
+              "dependencies": ["C020-03", "C050", "C110"]
+            }
+          ]
+        },
+        {
+          "id": "C050",
+          "name": "Quality & Laboratory (LIMS / QC)",
+          "description": "Quality control: sampling, instrument integration, results, COA, holds/releases, nonconformities and audit evidence.",
+          "dependencies": ["C010", "C020", "C090", "C110", "C120"],
+          "sub_capabilities": [
+            {
+              "id": "C050-01",
+              "name": "Sampling Plans & Test Requirements",
+              "description": "Define sampling frequency, methods, tests per material/product/customer and risk level.",
+              "dependencies": ["C010-05", "C100", "C110"]
+            },
+            {
+              "id": "C050-02",
+              "name": "Lab Instrument & External Lab Integration",
+              "description": "Automated intake of test results from instruments/LIS and external labs, with validation.",
+              "dependencies": ["C090", "C110", "C120"]
+            },
+            {
+              "id": "C050-03",
+              "name": "Results Management & SPC",
+              "description": "Result capture, limits, trend analysis, statistical process control, alerts.",
+              "dependencies": ["C050-01", "C080"]
+            },
+            {
+              "id": "C050-04",
+              "name": "Hold/Release & Disposition",
+              "description": "Workflow for holds, re-tests, release decisions, quarantines, and rework instructions.",
+              "dependencies": ["C020-03", "C110"]
+            },
+            {
+              "id": "C050-05",
+              "name": "Nonconformities & CAPA",
+              "description": "Deviations, complaints linkage, root cause analysis, corrective/preventive actions.",
+              "dependencies": ["C040-04", "C110"]
+            },
+            {
+              "id": "C050-06",
+              "name": "COA & Quality Documentation",
+              "description": "Certificate of Analysis generation, attachments, customer templates and controlled distribution.",
+              "dependencies": ["C060", "C110"]
+            }
+          ]
+        },
+        {
+          "id": "C060",
+          "name": "Compliance & Labeling Intelligence",
+          "description": "Regulatory and documentation: labels, claims validation, export rules, allergen/ingredient statements and audit trails.",
+          "dependencies": ["C010", "C020", "C050", "C090", "C110"],
+          "sub_capabilities": [
+            {
+              "id": "C060-01",
+              "name": "Label Composition & Declarations",
+              "description": "Generate ingredient declarations, nutritional panels (as applicable), additives, and required statements.",
+              "dependencies": ["C010-05", "C110"]
+            },
+            {
+              "id": "C060-02",
+              "name": "Claims & Rules Validation",
+              "description": "Validate label claims against formulation, tolerances, legal thresholds and customer promises.",
+              "dependencies": ["C010-02", "C010-05", "C110"]
+            },
+            {
+              "id": "C060-03",
+              "name": "Market/Export Compliance Packs",
+              "description": "Country/market specific requirements, language variants, document bundles for shipments.",
+              "dependencies": ["C020-02", "C050-06", "C110"]
+            },
+            {
+              "id": "C060-04",
+              "name": "Audit Trail & Evidence Management",
+              "description": "Traceable record of spec/label changes, approvals, linked lab evidence, and distribution logs.",
+              "dependencies": ["C110", "C050"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "Intelligence & Optimization",
+      "capabilities": [
+        {
+          "id": "C080",
+          "name": "Analytics, BI & AI Insights Layer",
+          "description": "Cross-domain intelligence: KPI dashboards, cost/margin drivers, QA trends, forecast accuracy, anomaly detection, predictive models and scenario engines.",
+          "dependencies": ["C010", "C020", "C030", "C040", "C050", "C060", "C090", "C100", "C110"],
+          "sub_capabilities": [
+            {
+              "id": "C080-01",
+              "name": "Unified KPI Dashboards",
+              "description": "Role-based dashboards for exec, nutrition, QA, procurement and operations.",
+              "dependencies": ["C100", "C110"]
+            },
+            {
+              "id": "C080-02",
+              "name": "Cost & Margin Drivers Analytics",
+              "description": "Material cost impact, formulation cost deltas, yield variances, customer profitability.",
+              "dependencies": ["C020-04", "C040-03"]
+            },
+            {
+              "id": "C080-03",
+              "name": "Quality Analytics & Trend Detection",
+              "description": "Spec drift, supplier defect trends, SPC alerts, complaint correlations.",
+              "dependencies": ["C050-03", "C050-05"]
+            },
+            {
+              "id": "C080-04",
+              "name": "Forecast & Service Level Analytics",
+              "description": "Forecast error, fill rate, OTIF, schedule adherence and root-cause analysis.",
+              "dependencies": ["C030-01", "C020-02", "C040-02"]
+            },
+            {
+              "id": "C080-05",
+              "name": "Scenario Engine (What-if Workspace)",
+              "description": "Compare scenarios across price, supply, specs and capacity; store and share assumptions.",
+              "dependencies": ["C010-06", "C030-05", "C110"]
+            },
+            {
+              "id": "C080-06",
+              "name": "AI Models & Decision Support",
+              "description": "Recommendations (substitutions, risk flags), anomaly detection, predictive quality or yield.",
+              "dependencies": ["C080-05", "C120"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "Data & Integration Foundation",
+      "capabilities": [
+        {
+          "id": "C090",
+          "name": "Integration & API Fabric (EDI/Events/Connectors)",
+          "description": "Connectivity: APIs, events, EDI, file interfaces, connectors to markets, banks, labs, MES/SCADA and partner platforms.",
+          "dependencies": ["C110", "C120"],
+          "sub_capabilities": [
+            {
+              "id": "C090-01",
+              "name": "API Gateway & Service Interfaces",
+              "description": "REST/GraphQL endpoints, auth, throttling, versioning, developer access controls.",
+              "dependencies": ["C110", "C120"]
+            },
+            {
+              "id": "C090-02",
+              "name": "Event Streaming & Messaging",
+              "description": "Publish/subscribe for changes (prices, specs, batches, lab results), async workflows.",
+              "dependencies": ["C120", "C110"]
+            },
+            {
+              "id": "C090-03",
+              "name": "EDI & Partner Connectivity",
+              "description": "Orders, ASNs, invoices, shipment status; standardized mappings and monitoring.",
+              "dependencies": ["C120", "C110"]
+            },
+            {
+              "id": "C090-04",
+              "name": "Connectors (MES/SCADA/Lab/Market Feeds)",
+              "description": "Prebuilt adapters for plant systems, lab systems, commodity/price feeds and sensors.",
+              "dependencies": ["C120", "C110"]
+            },
+            {
+              "id": "C090-05",
+              "name": "Integration Monitoring & Replay",
+              "description": "Health checks, dead-letter handling, retries, reconciliation reports and replay tooling.",
+              "dependencies": ["C120"]
+            }
+          ]
+        },
+        {
+          "id": "C100",
+          "name": "Master Data Management (MDM)",
+          "description": "Single source of truth for core entities: ingredients, nutrients, specs, suppliers, customers, sites, units and identifiers with governance.",
+          "dependencies": ["C110", "C120"],
+          "sub_capabilities": [
+            {
+              "id": "C100-01",
+              "name": "Reference Data & Units Management",
+              "description": "Units of measure, conversions, calendars, codesets, naming standards, multilingual labels.",
+              "dependencies": ["C110"]
+            },
+            {
+              "id": "C100-02",
+              "name": "Entity Lifecycle & Stewardship",
+              "description": "Create/approve/change workflows for ingredients, suppliers, customers, specs, sites.",
+              "dependencies": ["C110"]
+            },
+            {
+              "id": "C100-03",
+              "name": "Data Quality Rules & Validation",
+              "description": "Completeness checks, duplicate detection, validation rules and exception queues.",
+              "dependencies": ["C110", "C080"]
+            },
+            {
+              "id": "C100-04",
+              "name": "Master Data Synchronization",
+              "description": "Sync master data to/from ERP, MES, LIMS, portals via APIs/events with mapping.",
+              "dependencies": ["C090"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "Infrastructure, Trust & Operations",
+      "capabilities": [
+        {
+          "id": "C110",
+          "name": "Security, Roles & Governance",
+          "description": "Identity and access control, segregation of duties, audit logging, recipe/IP protection and governance policies.",
+          "dependencies": ["C120"],
+          "sub_capabilities": [
+            {
+              "id": "C110-01",
+              "name": "Identity, SSO & MFA",
+              "description": "SAML/OIDC, SSO, MFA, password policies and identity lifecycle.",
+              "dependencies": ["C120"]
+            },
+            {
+              "id": "C110-02",
+              "name": "Role-Based Access Control (RBAC)",
+              "description": "Fine-grained permissions by site/product/customer; least privilege and role templates.",
+              "dependencies": ["C120"]
+            },
+            {
+              "id": "C110-03",
+              "name": "Segregation of Duties (SoD) & Approvals",
+              "description": "Enforce SoD, approval chains for recipes, purchases, releases, and compliance changes.",
+              "dependencies": ["C120"]
+            },
+            {
+              "id": "C110-04",
+              "name": "Audit Logging & Compliance Reporting",
+              "description": "Immutable logs, access reports, change histories, evidence exports for audits.",
+              "dependencies": ["C120"]
+            },
+            {
+              "id": "C110-05",
+              "name": "Data Governance Policies",
+              "description": "Retention, classification, access reviews, privacy controls and governance workflows.",
+              "dependencies": ["C120"]
+            }
+          ]
+        },
+        {
+          "id": "C120",
+          "name": "Deployment, DevOps & Observability",
+          "description": "Cloud/on-prem delivery, environments, releases, monitoring, telemetry, backup/DR, scalability controls.",
+          "dependencies": [],
+          "sub_capabilities": [
+            {
+              "id": "C120-01",
+              "name": "Deployment Models (Cloud/On-Prem/Hybrid)",
+              "description": "Standardized packaging and provisioning across deployment types and multi-site setups.",
+              "dependencies": []
+            },
+            {
+              "id": "C120-02",
+              "name": "CI/CD & Release Management",
+              "description": "Pipelines, versioning, feature flags, rollback strategies and change management.",
+              "dependencies": []
+            },
+            {
+              "id": "C120-03",
+              "name": "Observability (Logs/Metrics/Tracing)",
+              "description": "Centralized monitoring, alerting, SLOs, performance monitoring and root-cause tooling.",
+              "dependencies": []
+            },
+            {
+              "id": "C120-04",
+              "name": "Backup, Disaster Recovery & HA",
+              "description": "Backups, restore testing, RPO/RTO targets, high availability patterns.",
+              "dependencies": []
+            },
+            {
+              "id": "C120-05",
+              "name": "Data Platform Foundations",
+              "description": "Operational data stores, analytics warehouse/lake hooks, retention and data pipelines.",
+              "dependencies": ["C120-02"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

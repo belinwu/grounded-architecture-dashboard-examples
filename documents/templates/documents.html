@@ -66,9 +66,57 @@
         ::-ms-input-placeholder {
             color: lightgrey;
         }
+
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
     </style>
     <link rel="stylesheet" target="_blank" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" target="_blank" href="https://fonts.googleapis.com/css?family=Lato">
+    <script>
+        function openTab(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </head>
 <body>
 <div style="" class="hidden">
@@ -86,50 +134,98 @@
 </div>
 </div>
 
-<div id="content"></div>
+<div class="tab" id="tabs">
+</div>
+
+<div id="tab_content">
+</div>
+
+<div id="filtered_content"></div>
 
 <script>
     const data = ${data};
 
     function update() {
         const filter = document.getElementById('filter').value.toLowerCase().trim();
-        let html = '';
         let count = 0;
 
         if (filter) {
-            const filteredData = data.filter(item => !filter || item.title.toLowerCase().includes(filter))
-        } else {
-            data.forEach(group => {
-                html += '<div class="section">';
-                html += '<div>&nbsp;&nbsp;&nbsp;';
-                html += group.title;
-                html += '</div>';
-                group.items.forEach(item => {
-                    html += '<div class="doc">';
-                    html += '<table>';
-                    html += '<tr>';
-                    html += '<td style="width: 80px">';
-                    html += '<img src="icons/' + item.icon + '" style="vertical-align: middle; height: 80px">';
-                    html += '</td>';
-                    html += '<td>';
-                    html += '<a target="_blank" href="' + item.link + '">';
-                    html += '<div style="font-size: 95%; color: grey">' + item.type + '</div>';
-                    html += '<div style="color: blue; font-size: 110%">' + item.title + '</div>';
-                    html += '</a>';
-                    html += '</td>';
-                    html += '</tr>';
-                    html += '<tr>';
-                    html += '<tr>';
-                    html += '<td colspan="2" style="font-size: 80%; color: grey; border-top: 1px dashed black; padding-top: 10px">' + item.summary + '</td>';
-                    html += '</table>';
+            const filteredData = data; // .filter(item => !filter || item.title.toLowerCase().includes(filter))
+            let html = '';
+            filteredData.forEach(tab => {
+                tabCount += 1;
+                tab.resources.forEach(group => {
+                    html += '<div class="section">';
+                    html += '<div class="section">';
+                    html += '<div>&nbsp;&nbsp;&nbsp;';
+                    html += group.title;
+                    html += '</div>';
+                    group.items.forEach(item => {
+                        html += '<div class="doc">';
+                        html += '<table>';
+                        html += '<tr>';
+                        html += '<td style="width: 80px">';
+                        html += '<img src="icons/' + item.icon + '" style="vertical-align: middle; height: 80px">';
+                        html += '</td>';
+                        html += '<td>';
+                        html += '<a target="_blank" href="' + item.link + '">';
+                        html += '<div style="font-size: 95%; color: grey">' + item.type + '</div>';
+                        html += '<div style="color: blue; font-size: 110%">' + item.title + '</div>';
+                        html += '</a>';
+                        html += '</td>';
+                        html += '</tr>';
+                        html += '<tr>';
+                        html += '<tr>';
+                        html += '<td colspan="2" style="font-size: 80%; color: grey; border-top: 1px dashed black; padding-top: 10px">' + item.summary + '</td>';
+                        html += '</table>';
+                        html += '</div>';
+                    });
                     html += '</div>';
                 });
-                html += '</div>';
             });
+            document.getElementById('filtered_content').innerHTML = html;
+        } else {
+            let tabCount = 0;
+            let tabHtml = ' ';
+            let contentHtml = ' ';
+            data.forEach(tab => {
+                tabCount += 1;
+                const tabId = 'tab_' + tabCount;
+                contentHtml += '<div id="' + tabId + '" class="tabcontent" style="' + (tabCount === 1 ? 'display: block; ' : '') + 'margin: 0; padding: 6px">';
+                tabHtml += '<button id="tab_' + tabId + '" class="tablinks' + (tabCount === 1 ? ' active' : '') + '" onclick="openTab(event, \'' + tabId + '\')">' + tab.tab + '</button>\n';
+                tab.resources.forEach(group => {
+                    contentHtml += '<div class="section">';
+                    contentHtml += '<div>&nbsp;&nbsp;&nbsp;';
+                    contentHtml += group.title;
+                    contentHtml += '</div>';
+                    group.items.forEach(item => {
+                        contentHtml += '<div class="doc">';
+                        contentHtml += '<table>';
+                        contentHtml += '<tr>';
+                        contentHtml += '<td style="width: 80px">';
+                        contentHtml += '<img src="icons/' + item.icon + '" style="vertical-align: middle; height: 80px">';
+                        contentHtml += '</td>';
+                        contentHtml += '<td>';
+                        contentHtml += '<a target="_blank" href="' + item.link + '">';
+                        contentHtml += '<div style="font-size: 95%; color: grey">' + item.type + '</div>';
+                        contentHtml += '<div style="color: blue; font-size: 110%">' + item.title + '</div>';
+                        contentHtml += '</a>';
+                        contentHtml += '</td>';
+                        contentHtml += '</tr>';
+                        contentHtml += '<tr>';
+                        contentHtml += '<tr>';
+                        contentHtml += '<td colspan="2" style="font-size: 80%; color: grey; border-top: 1px dashed black; padding-top: 10px">' + item.summary + '</td>';
+                        contentHtml += '</table>';
+                        contentHtml += '</div>';
+                    });
+                    contentHtml += '</div>';
+                });
+                contentHtml += '</div>';
+            });
+            document.getElementById('tabs').innerHTML = tabHtml;
+            document.getElementById('tab_content').innerHTML = contentHtml;
         }
         document.getElementById('search-summary').innerHTML = ' = ' + count + ' ' + (count === 1 ? 'item' : 'items');
-
-        document.getElementById('content').innerHTML = html;
     }
 
     update();

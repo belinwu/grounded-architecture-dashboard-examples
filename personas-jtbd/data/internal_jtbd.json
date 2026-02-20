@@ -1,0 +1,200 @@
+{
+  "internal_personas": [
+    {
+      "persona": "Product Teams",
+      "jobs": [
+        {
+          "id": "PT-01",
+          "name": "Deliver high-value product increments",
+          "what_it_is": "Translate market needs and strategy into validated product capabilities.",
+          "outcome": "Features that increase adoption, retention and competitive advantage.",
+          "steps": [
+            {
+              "step": "Identify market and customer needs",
+              "description": "Collect input from sales, support, customers and industry trends to understand unmet needs."
+            },
+            {
+              "step": "Define problem statements and scope",
+              "description": "Clarify user pain points, business value and measurable outcomes."
+            },
+            {
+              "step": "Prioritize against roadmap and strategy",
+              "description": "Balance revenue impact, technical effort and strategic alignment."
+            },
+            {
+              "step": "Design solution and user flows",
+              "description": "Create functional specifications, UX flows and architectural alignment."
+            },
+            {
+              "step": "Deliver increment and validate impact",
+              "description": "Release feature, measure adoption, collect feedback and iterate."
+            }
+          ]
+        },
+        {
+          "id": "PT-02",
+          "name": "Maintain platform coherence and scalability",
+          "what_it_is": "Ensure modules work together and scale across customers.",
+          "outcome": "Stable, extensible and consistent platform architecture.",
+          "steps": [
+            {
+              "step": "Define architectural standards",
+              "description": "Set guidelines for APIs, data models and module boundaries."
+            },
+            {
+              "step": "Review cross-module dependencies",
+              "description": "Prevent duplication and conflicting logic."
+            },
+            {
+              "step": "Monitor performance and technical debt",
+              "description": "Track system health, refactor where necessary."
+            },
+            {
+              "step": "Plan platform evolution",
+              "description": "Align infrastructure, security and scalability improvements with growth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Customer Support",
+      "jobs": [
+        {
+          "id": "CS-01",
+          "name": "Resolve customer incidents efficiently",
+          "what_it_is": "Diagnose and resolve issues affecting customer operations.",
+          "outcome": "Fast resolution, minimal downtime and high customer satisfaction.",
+          "steps": [
+            {
+              "step": "Receive and classify ticket",
+              "description": "Categorize severity, module impact and business risk."
+            },
+            {
+              "step": "Reproduce or analyze issue",
+              "description": "Investigate logs, data and configuration to understand root cause."
+            },
+            {
+              "step": "Provide workaround or fix",
+              "description": "Deliver temporary mitigation or coordinate code correction."
+            },
+            {
+              "step": "Communicate status transparently",
+              "description": "Keep customer informed on timeline and actions."
+            },
+            {
+              "step": "Document knowledge",
+              "description": "Update internal documentation and prevent recurrence."
+            }
+          ]
+        },
+        {
+          "id": "CS-02",
+          "name": "Increase product adoption",
+          "what_it_is": "Help customers use the platform more effectively.",
+          "outcome": "Higher retention and module expansion.",
+          "steps": [
+            {
+              "step": "Identify underused features",
+              "description": "Analyze usage metrics and customer workflows."
+            },
+            {
+              "step": "Educate and guide customers",
+              "description": "Provide training, best practices and optimization advice."
+            },
+            {
+              "step": "Collect feedback for product",
+              "description": "Relay recurring issues and improvement suggestions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Sales",
+      "jobs": [
+        {
+          "id": "S-01",
+          "name": "Win new enterprise deals",
+          "what_it_is": "Acquire new customers in target industries.",
+          "outcome": "Closed contracts and revenue growth.",
+          "steps": [
+            {
+              "step": "Identify qualified prospects",
+              "description": "Target companies with fit in size, maturity and industry."
+            },
+            {
+              "step": "Diagnose business pain",
+              "description": "Understand cost pressures, inefficiencies and strategic goals."
+            },
+            {
+              "step": "Demonstrate value proposition",
+              "description": "Show relevant use cases aligned to persona jobs-to-be-done."
+            },
+            {
+              "step": "Build ROI case",
+              "description": "Quantify savings, risk reduction and operational gains."
+            },
+            {
+              "step": "Negotiate and close",
+              "description": "Align pricing, scope and contractual terms."
+            }
+          ]
+        },
+        {
+          "id": "S-02",
+          "name": "Expand within existing accounts",
+          "what_it_is": "Increase footprint through additional modules or sites.",
+          "outcome": "Higher ARR and deeper platform entrenchment.",
+          "steps": [
+            {
+              "step": "Analyze account maturity",
+              "description": "Assess current module usage and gaps."
+            },
+            {
+              "step": "Identify cross-sell opportunities",
+              "description": "Map unmet needs to available capabilities."
+            },
+            {
+              "step": "Present expansion value",
+              "description": "Show incremental ROI and operational impact."
+            },
+            {
+              "step": "Close expansion agreement",
+              "description": "Formalize scope and onboarding plan."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Procurement (Internal / Vendor Management)",
+      "jobs": [
+        {
+          "id": "IP-01",
+          "name": "Manage technology and service vendors effectively",
+          "what_it_is": "Ensure external providers deliver value, performance and cost control.",
+          "outcome": "Reliable partnerships and optimized vendor spend.",
+          "steps": [
+            {
+              "step": "Evaluate vendor performance",
+              "description": "Review SLAs, delivery quality and contract adherence."
+            },
+            {
+              "step": "Benchmark pricing and alternatives",
+              "description": "Compare cost structures against market standards."
+            },
+            {
+              "step": "Negotiate contracts and renewals",
+              "description": "Optimize terms, pricing and risk allocation."
+            },
+            {
+              "step": "Monitor compliance and risk",
+              "description": "Ensure vendors meet security, regulatory and operational requirements."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

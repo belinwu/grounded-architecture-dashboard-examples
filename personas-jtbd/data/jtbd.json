@@ -1,0 +1,214 @@
+{
+  "jobs_to_be_done": [
+    {
+      "persona": "Executive / COO / GM",
+      "jobs": [
+        {
+          "id": "E-01",
+          "name": "Protect margin in volatile markets",
+          "what_it_is": "Continuously maintain profitability despite raw material price swings and supply uncertainty.",
+          "outcome": "Stable or improved margin and predictable earnings.",
+          "steps": [
+            {
+              "step": "Monitor ingredient and energy cost evolution",
+              "description": "Track market indices, supplier prices, contracts and energy trends; receive alerts for abnormal movements."
+            },
+            {
+              "step": "Understand exposure by product and customer",
+              "description": "See which products, formulas and customers are most impacted by changes and quantify margin risk."
+            },
+            {
+              "step": "Trigger reformulation or price updates",
+              "description": "Initiate simulations in formulation or propose commercial price adjustments."
+            },
+            {
+              "step": "Validate service and quality impact",
+              "description": "Ensure substitutions or changes will not violate specs, contracts or performance."
+            },
+            {
+              "step": "Approve change",
+              "description": "Review financial projections and authorize operational or commercial actions."
+            },
+            {
+              "step": "Track realized versus expected benefit",
+              "description": "Compare predicted savings with actual outcomes and refine future decisions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Nutritionist / Formulation Manager",
+      "jobs": [
+        {
+          "id": "N-01",
+          "name": "Create the optimal recipe",
+          "what_it_is": "Build a formulation that satisfies nutrient and business constraints at minimal cost.",
+          "outcome": "Feasible, compliant and profitable formula ready for production.",
+          "steps": [
+            {
+              "step": "Select candidate ingredients",
+              "description": "Choose available and approved raw materials based on nutrition, price and supply."
+            },
+            {
+              "step": "Apply nutritional and operational constraints",
+              "description": "Define limits, ratios, inclusion rules, customer specs and plant restrictions."
+            },
+            {
+              "step": "Run optimization",
+              "description": "Execute least-cost or multi-objective calculation to generate viable formulas."
+            },
+            {
+              "step": "Evaluate alternatives",
+              "description": "Compare options by cost, risk, availability and production practicality."
+            },
+            {
+              "step": "Validate plant practicality",
+              "description": "Confirm batching feasibility, pelletability, physical properties or process impact."
+            },
+            {
+              "step": "Submit for approval",
+              "description": "Send recipe through governance workflow with justification and documentation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Operations / Production Manager",
+      "jobs": [
+        {
+          "id": "O-01",
+          "name": "Execute the plan reliably",
+          "what_it_is": "Deliver production according to schedule while managing real-world constraints.",
+          "outcome": "High adherence to plan with minimal disruption.",
+          "steps": [
+            {
+              "step": "Receive production schedule",
+              "description": "Obtain prioritized orders, sequences and quantities from planning."
+            },
+            {
+              "step": "Confirm materials and capacity",
+              "description": "Verify raw material availability, staffing and equipment readiness."
+            },
+            {
+              "step": "Dispatch orders to lines",
+              "description": "Release instructions and recipes to operators or automation."
+            },
+            {
+              "step": "Manage emerging issues",
+              "description": "Handle shortages, breakdowns or quality holds and re-plan if necessary."
+            },
+            {
+              "step": "Record actuals",
+              "description": "Capture real consumption, times, yields and deviations."
+            },
+            {
+              "step": "Reconcile with plan",
+              "description": "Compare planned vs actual and explain variances."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Quality / Compliance Manager",
+      "jobs": [
+        {
+          "id": "Q-01",
+          "name": "Release safe and compliant product",
+          "what_it_is": "Ensure products meet specifications and legal requirements before shipment.",
+          "outcome": "Audit readiness and reduced risk.",
+          "steps": [
+            {
+              "step": "Define sampling requirements",
+              "description": "Set which tests are required based on risk, material and regulations."
+            },
+            {
+              "step": "Receive and validate lab results",
+              "description": "Collect results automatically or manually and ensure completeness."
+            },
+            {
+              "step": "Compare against limits",
+              "description": "Evaluate conformity versus specifications and tolerances."
+            },
+            {
+              "step": "Block or release product",
+              "description": "Decide disposition and communicate to operations and logistics."
+            },
+            {
+              "step": "Generate required documentation",
+              "description": "Produce COAs, compliance statements and audit evidence."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "Procurement",
+      "jobs": [
+        {
+          "id": "P-01",
+          "name": "Buy at the best risk-adjusted cost",
+          "what_it_is": "Secure materials at optimal price while maintaining supply continuity.",
+          "outcome": "Lower input costs and reduced supply risk.",
+          "steps": [
+            {
+              "step": "Review demand requirements",
+              "description": "Understand upcoming volume needs from production and forecast."
+            },
+            {
+              "step": "Compare supplier options",
+              "description": "Evaluate price, availability, reliability and quality history."
+            },
+            {
+              "step": "Analyze contract positions",
+              "description": "Check commitments, hedges and open exposure."
+            },
+            {
+              "step": "Simulate formulation impact",
+              "description": "See how purchases influence recipe cost and flexibility."
+            },
+            {
+              "step": "Place and track orders",
+              "description": "Issue POs, confirm delivery schedules and monitor execution."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "persona": "IT / Digital Lead",
+      "jobs": [
+        {
+          "id": "IT-01",
+          "name": "Keep the landscape stable and integrated",
+          "what_it_is": "Ensure systems are reliable, secure and connected.",
+          "outcome": "High availability, trusted data and satisfied users.",
+          "steps": [
+            {
+              "step": "Maintain interfaces",
+              "description": "Ensure data flows between ERP, formulation, MES, labs and partners."
+            },
+            {
+              "step": "Monitor incidents and performance",
+              "description": "Track uptime, latency, failures and respond quickly."
+            },
+            {
+              "step": "Manage upgrades and releases",
+              "description": "Plan deployments while minimizing disruption."
+            },
+            {
+              "step": "Enforce security and governance",
+              "description": "Apply roles, auditability, data protection and compliance."
+            },
+            {
+              "step": "Reduce shadow IT",
+              "description": "Provide trusted capabilities so users avoid spreadsheets or side tools."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
